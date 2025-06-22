@@ -24,6 +24,16 @@ public class Employee {
         this.jobLevel = jobLevel;
     }
 
+    public Employee(int employeeEroId, String employeeId, String firstName, String lastName, Date hiredDate, int age, int jobLevel) {
+        this.employeeEroId = employeeEroId;
+    	this.employeeId = employeeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.hiredDate = hiredDate;
+        this.age = age;
+        this.jobLevel = jobLevel;
+    }
+    
 	public int getEmployeeEroId() {
 		return employeeEroId;
 	}
