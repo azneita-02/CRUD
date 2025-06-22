@@ -37,6 +37,27 @@ public class EmployeeDAO {
         return false;
     }
     
+    public boolean updateEmployee(Employee emp) {
+    	String sql = "UPDATE EMPLOYEE_ERO SET EMPLOYEEID = ?, FIRSTNAME = ?, LASTNAME = ?, HIREDDATE = ?, AGE = ?, JOBLEVEL = ? WHERE EMPLOYEE_EROID = ?";
+    
+    	try(Connection con = DBConnection.getConnection()){
+    		PreparedStatement ps = con.prepareStatement(sql);
+    		
+    		System.out.println(emp.getEmployeeEroId());
+    		
+    		ps.setString(1, emp.getEmployeeId());
+            ps.setString(2, emp.getFirstName());
+            ps.setString(3, emp.getLastName());
+            ps.setDate(4, emp.getHiredDate());
+            ps.setInt(5, emp.getAge());
+            ps.setInt(6, emp.getJobLevel());
+            ps.setInt(7, emp.getEmployeeEroId());
+            return ps.executeUpdate() > 0;
+    	}catch(SQLException exc) {
+    		exc.printStackTrace();
+    		return false;
+    	}
+    }
     public List<Employee> getAllEmployees() {
         List<Employee> list = new ArrayList<>();
 
